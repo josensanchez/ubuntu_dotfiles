@@ -5,6 +5,35 @@ return {
   dependencies = 'tpope/vim-dispatch',
   config = function()
     vim.g.projectionist_heuristics = {
+      ["vis_api/artisan"] = {
+        ['vis_api/app/*.php'] = {
+          type = 'source',
+          alternate = {
+            'vis_api/tests/Unit/{}Test.php',
+            'vis_api/tests/Feature/{}Test.php',
+          },
+        },
+        ['vis_api/tests/Feature/*Test.php'] = {
+          type = 'test',
+          alternate = 'vis_api/app/{}.php',
+        },
+        ['vis_api/tests/Unit/*Test.php'] = {
+          type = 'test',
+          alternate = 'vis_api/app/{}.php',
+        },
+        ['vis_api/app/Models/*.php'] = {
+          type = 'model',
+        },
+        ['vis_api/app/Http/Controllers/*.php'] = {
+          type = 'controller',
+        },
+        ['vis_api/routes/*.php'] = {
+          type = 'route',
+        },
+        ['vis_api/database/migrations/*.php'] = {
+          type = 'migration',
+        },
+      },
       artisan = {
         ['*'] = {
           start = 'php artisan serve',

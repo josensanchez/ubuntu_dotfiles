@@ -59,7 +59,7 @@
 [color]
     ui = auto
 [commit]
-    gpgsign = true
+	gpgsign = false
 [core]
     editor = nvim
     excludesfile = ~/.gitignore_global
@@ -91,3 +91,6 @@
     rebase = false
 [init]
     defaultBranch = main
+[user]
+	email = josanchez@verifarma.com
+	name = Jose Norberto Sanchez

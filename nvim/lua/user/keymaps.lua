@@ -57,3 +57,18 @@ vim.keymap.set('n', '<C-Right>', ':vertical resize +2<CR>')
 -- vim.keymap.set('n', '<A-k>', ':move .-2<CR>==')
 -- vim.keymap.set('v', '<A-j>', ":move '>+1<CR>gv=gv")
 -- vim.keymap.set('v', '<A-k>', ":move '<-2<CR>gv=gv")
+vim.api.nvim_set_keymap('n', '<leader>o', ':lua ToggleWindows()<CR>', { noremap = true, silent = true })
+
+function ToggleWindows()
+  local current_win = vim.api.nvim_get_current_win()
+  local left_win = vim.fn.win_getid(vim.fn.winnr('h'))
+
+  if current_win == left_win then
+    vim.cmd('wincmd l')
+  else
+    vim.cmd('wincmd h')
+  end
+end
+
+vim.keymap.set('n', '<C-s>', ':w<CR>')
+vim.keymap.set('i', '<C-s>', '<Esc>:w<CR>1li')
